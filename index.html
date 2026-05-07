@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Free Webinar – Flare Freedom | Naria Le Mire Nutrition</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sage:       #6b9278;
+  --sage-deep:  #3d5c47;
+  --sage-lite:  #c8dece;
+  --sage-pale:  #eaf2ec;
+  --terra:      #bf5c42;
+  --terra-lite: #f7ede9;
+  --cream:      #faf7f1;
+  --warm:       #f2ebe0;
+  --dark:       #1e1a14;
+  --dark-mid:   #3d3830;
+  --mid:        #6b6358;
+  --muted:      #9b9188;
+  --white:      #ffffff;
+  --ff:         'Cormorant', Georgia, serif;
+  --fb:         'Outfit', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--fb); background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+/* ── STICKY NAV ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(30,26,20,0.96);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-brand { font-family: var(--ff); font-size: 18px; color: var(--sage-lite); letter-spacing: 0.5px; font-weight: 700; }
+.nav-cta {
+  background: var(--terra); color: white;
+  padding: 9px 22px; border-radius: 6px;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+  text-decoration: none; border: none; cursor: pointer;
+  font-family: var(--fb);
+  transition: background .2s, transform .15s;
+}
+.nav-cta:hover { background: #9e4932; transform: translateY(-1px); }
+
+/* ── URGENCY TICKER ── */
+.ticker {
+  background: var(--terra);
+  color: white; text-align: center;
+  padding: 11px 24px; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.ticker strong { font-weight: 700; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--dark);
+  position: relative; overflow: hidden;
+  padding: 88px 24px 80px;
+}
+/* organic texture overlay */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 20%, rgba(107,146,120,0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 50% at 10% 80%, rgba(191,92,66,0.09) 0%, transparent 60%);
+  pointer-events: none;
+}
+/* botanical SVG lines */
+.hero-lines {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M200 0 Q250 100 200 200 Q150 300 200 400' stroke='%236b9278' stroke-width='1' fill='none'/%3E%3Cpath d='M0 200 Q100 160 200 200 Q300 240 400 200' stroke='%236b9278' stroke-width='1' fill='none'/%3E%3Ccircle cx='200' cy='200' r='120' stroke='%236b9278' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+  background-size: 400px 400px;
+}
+
+.hero-inner { max-width: 820px; margin: 0 auto; text-align: center; position: relative; }
+
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(107,146,120,0.16);
+  border: 1px solid rgba(107,146,120,0.35);
+  color: var(--sage-lite);
+  font-size: 12px; font-weight: 500; letter-spacing: 0.13em;
+  text-transform: uppercase; padding: 7px 18px; border-radius: 100px;
+  margin-bottom: 32px;
+  animation: fadeUp .6s ease both;
+}
+.hero-pill-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); animation: pulse 1.8s infinite; }
+
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.75)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+.hero h1 {
+  font-family: var(--ff);
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 700; line-height: 1.12;
+  color: var(--white); margin-bottom: 8px;
+  animation: fadeUp .7s .1s ease both;
+}
+.hero h1 .accent { color: #9dc4a9; font-style: italic; }
+.hero h1 .break { display: block; font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 400; font-style: italic; color: rgba(255,255,255,0.55); margin-top: 6px; }
+
+.hero-sub {
+  font-size: clamp(15px, 2vw, 17px); font-weight: 300;
+  color: rgba(255,255,255,0.6); line-height: 1.7;
+  max-width: 540px; margin: 20px auto 44px;
+  animation: fadeUp .7s .2s ease both;
+}
+.hero-sub strong { color: rgba(255,255,255,0.9); font-weight: 500; }
+
+/* Inline mini form */
+.hero-form {
+  display: flex; gap: 0; max-width: 480px; margin: 0 auto 28px;
+  border-radius: 10px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  animation: fadeUp .7s .35s ease both;
+}
+.hero-form input {
+  flex: 1; padding: 16px 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-right: none; border-radius: 10px 0 0 10px;
+  font-family: var(--fb); font-size: 15px; color: white;
+  outline: none;
+}
+.hero-form input::placeholder { color: rgba(255,255,255,0.35); }
+.hero-form input:focus { background: rgba(255,255,255,0.12); border-color: var(--sage); }
+.hero-form button {
+  background: var(--sage); color: white;
+  border: none; padding: 16px 26px;
+  font-family: var(--fb); font-size: 14px; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
+  border-radius: 0 10px 10px 0;
+  transition: background .2s;
+}
+.hero-form button:hover { background: var(--sage-deep); }
+
+.hero-trust {
+  display: flex; align-items: center; justify-content: center; gap: 20px;
+  flex-wrap: wrap; font-size: 12px; color: rgba(255,255,255,0.38);
+  animation: fadeUp .7s .45s ease both;
+}
+.hero-trust span { display: flex; align-items: center; gap: 6px; }
+
+/* Event details strip */
+.event-strip {
+  background: rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: 56px; padding: 22px 24px 0;
+  display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;
+  animation: fadeUp .7s .5s ease both;
+}
+.event-item { text-align: center; padding-bottom: 22px; }
+.event-item .e-label { font-size: 10px; text-transform: uppercase; letter-spacing: .13em; color: rgba(255,255,255,0.3); margin-bottom: 5px; }
+.event-item .e-val { font-family: var(--ff); font-size: 18px; color: rgba(255,255,255,0.85); font-weight: 500; }
+
+/* ── COUNTDOWN ── */
+.countdown-wrap {
+  background: var(--warm);
+  padding: 44px 24px; text-align: center;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.cd-label { font-size: 11px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.countdown { display: inline-flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.cd-unit {
+  background: var(--white); border-radius: 10px;
+  padding: 16px 20px; min-width: 74px; text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.cd-num { font-family: var(--ff); font-size: 34px; font-weight: 700; color: var(--sage-deep); line-height: 1; }
+.cd-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .11em; color: var(--muted); margin-top: 6px; }
+.cd-sep { font-family: var(--ff); font-size: 28px; color: var(--muted); font-weight: 700; padding-bottom: 14px; }
+
+/* ── SOCIAL PROOF STRIP ── */
+.proof-strip {
+  background: var(--sage-deep); padding: 22px 24px;
+  display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
+}
+.proof-item { text-align: center; }
+.proof-num { font-family: var(--ff); font-size: 28px; font-weight: 700; color: var(--sage-lite); line-height: 1; }
+.proof-lbl { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 4px; letter-spacing: .04em; }
+
+/* ── SHARED SECTION STYLES ── */
+.section { padding: 80px 24px; }
+.inner { max-width: 920px; margin: 0 auto; }
+.inner-sm { max-width: 680px; margin: 0 auto; }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--sage); margin-bottom: 12px; }
+.sec-title { font-family: var(--ff); font-size: clamp(1.7rem,4vw,2.6rem); font-weight: 700; line-height: 1.18; color: var(--dark); margin-bottom: 16px; }
+.sec-sub { font-size: 16px; color: var(--mid); line-height: 1.72; font-weight: 300; max-width: 580px; }
+
+/* ── PROBLEM SECTION ── */
+.problem { background: var(--cream); }
+.problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 48px; }
+@media(max-width:680px){ .problem-layout{grid-template-columns:1fr;} }
+.problem-visual {
+  background: var(--dark); border-radius: 20px;
+  padding: 36px 32px; position: relative; overflow: hidden;
+}
+.problem-visual::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(107,146,120,0.15) 0%, transparent 70%);
+}
+.problem-quote {
+  font-family: var(--ff); font-size: 20px; font-style: italic;
+  color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 20px;
+  position: relative;
+}
+.problem-quote::before { content: '\201C'; font-size: 60px; color: var(--sage); line-height: 0; position: relative; top: 20px; margin-right: 4px; }
+.problem-attr { font-size: 13px; color: var(--sage-lite); font-weight: 500; }
+.problem-items { }
+.p-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.p-item:last-child { border-bottom: none; }
+.p-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.p-item h4 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+.p-item p { font-size: 13.5px; color: var(--mid); line-height: 1.55; font-weight: 300; }
+
+/* ── LEARN ── */
+.learn { background: var(--white); }
+.learn-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 18px; margin-top: 48px; }
+.lcard {
+  border-radius: 14px; padding: 28px 24px;
+  background: var(--cream);
+  border: 1px solid rgba(0,0,0,0.06);
+  position: relative; overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.lcard:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(61,92,71,0.12); }
+.lcard::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--sage), var(--sage-deep));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .3s;
+}
+.lcard:hover::after { transform: scaleX(1); }
+.lcard .num {
+  font-family: var(--ff); font-size: 40px; font-weight: 700;
+  color: rgba(107,146,120,0.18); line-height: 1;
+  margin-bottom: 4px;
+}
+.lcard .icon { font-size: 28px; margin-bottom: 12px; }
+.lcard h3 { font-family: var(--ff); font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.lcard p { font-size: 13.5px; color: var(--mid); line-height: 1.6; font-weight: 300; }
+
+/* ── WHO ── */
+.who { background: var(--sage-deep); }
+.who .eyebrow { color: rgba(255,255,255,0.45); }
+.who .sec-title { color: white; }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 44px; }
+@media(max-width:580px){ .who-grid{grid-template-columns:1fr;} }
+.who-card {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 18px 20px;
+}
+.w-check {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(157,196,169,0.25); border: 1px solid rgba(157,196,169,0.45);
+  display: flex; align-items: center; justify-content: center;
+  color: #9dc4a9; font-size: 12px; flex-shrink: 0; margin-top: 1px;
+}
+.who-card p { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.55; font-weight: 300; }
+
+/* ── TESTIMONIAL ── */
+.testi { background: var(--warm); }
+.testi-card {
+  background: var(--white); border-radius: 20px;
+  padding: 44px 40px; max-width: 700px; margin: 40px auto 0;
+  position: relative; border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 8px 48px rgba(61,92,71,0.1);
+}
+.testi-mark {
+  font-family: var(--ff); font-size: 100px; line-height: 0.6;
+  color: var(--sage-lite); position: absolute;
+  top: 32px; left: 32px; pointer-events: none;
+}
+.testi-text {
+  font-family: var(--ff); font-size: clamp(17px,2.5vw,20px);
+  font-style: italic; color: var(--dark); line-height: 1.65;
+  margin-bottom: 28px; padding-top: 8px;
+}
+.testi-name { font-size: 13px; font-weight: 600; color: var(--sage-deep); letter-spacing: .05em; }
+.testi-stars { color: #c8923a; font-size: 14px; margin-bottom: 6px; }
+
+/* ── ABOUT ── */
+.about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 220px 1fr; gap: 52px; align-items: start; margin-top: 48px; }
+@media(max-width:620px){ .about-grid{grid-template-columns:1fr;} }
+.about-avatar-wrap { text-align: center; }
+.about-avatar {
+  width: 200px; height: 200px; border-radius: 20px;
+  background: linear-gradient(135deg, var(--sage-pale), var(--sage-lite));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ff); font-size: 56px; font-weight: 700;
+  color: var(--sage-deep); margin: 0 auto 16px;
+  border: 4px solid var(--white);
+  box-shadow: 0 12px 40px rgba(61,92,71,0.14);
+}
+.about-cert {
+  display: inline-block; background: var(--sage-pale);
+  color: var(--sage-deep); font-size: 12px; font-weight: 600;
+  padding: 5px 12px; border-radius: 6px;
+  border: 1px solid var(--sage-lite);
+}
+.about-body { font-size: 15px; color: var(--mid); line-height: 1.78; font-weight: 300; }
+.about-body p + p { margin-top: 14px; }
+.about-creds { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.cred-chip {
+  background: var(--sage-pale); color: var(--sage-deep);
+  font-size: 12px; font-weight: 500; padding: 5px 12px;
+  border-radius: 20px; border: 1px solid var(--sage-lite);
+}
+
+/* ── BONUS ── */
+.bonus { background: var(--terra-lite); }
+.bonus-card {
+  background: var(--white); border-radius: 18px;
+  padding: 36px; max-width: 640px; margin: 36px auto 0;
+  border: 1px solid rgba(191,92,66,0.15);
+  box-shadow: 0 8px 32px rgba(191,92,66,0.08);
+}
+.bonus-tag {
+  display: inline-block; background: var(--terra); color: white;
+  font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; padding: 5px 14px; border-radius: 4px;
+  margin-bottom: 16px;
+}
+.bonus-card h3 { font-family: var(--ff); font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+.bonus-card > p { font-size: 14px; color: var(--mid); font-weight: 300; line-height: 1.65; margin-bottom: 24px; }
+.bonus-list { display: flex; flex-direction: column; gap: 10px; }
+.b-item { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; color: var(--dark-mid); line-height: 1.5; }
+.b-icon { font-size: 16px; flex-shrink: 0; }
+
+/* ── FORM SECTION (the money shot) ── */
+.form-sec { background: var(--dark); padding: 80px 24px; }
+.form-layout { display: grid; grid-template-columns: 1fr 440px; gap: 60px; align-items: start; max-width: 960px; margin: 0 auto; }
+@media(max-width:860px){ .form-layout{grid-template-columns:1fr;} }
+
+.form-left .eyebrow { color: rgba(255,255,255,0.4); }
+.form-left .sec-title { color: white; margin-bottom: 20px; }
+.form-left .sec-sub { color: rgba(255,255,255,0.55); max-width: 100%; }
+
+.what-get { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+.wg-item { display: flex; gap: 14px; align-items: flex-start; }
+.wg-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: rgba(107,146,120,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.wg-item strong { display: block; color: white; font-size: 14px; margin-bottom: 2px; }
+.wg-item span { color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 300; line-height: 1.5; }
+
+/* The form card */
+.form-card {
+  background: var(--white); border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+}
+.form-card-header {
+  background: linear-gradient(135deg, var(--sage-deep), var(--sage));
+  padding: 28px 32px;
+}
+.form-card-header h3 { font-family: var(--ff); font-size: 22px; font-weight: 700; color: white; margin-bottom: 4px; }
+.form-card-header p { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 300; }
+.form-card-body { padding: 28px 32px 32px; }
+
+.spots-alert {
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(191,92,66,0.08); border: 1px solid rgba(191,92,66,0.2);
+  border-radius: 10px; padding: 12px 16px; margin-bottom: 24px;
+}
+.s-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--terra); flex-shrink: 0; animation: pulse 1.5s infinite; }
+.spots-alert p { font-size: 13px; color: var(--terra); font-weight: 500; line-height: 1.4; }
+
+.reg-form { display: flex; flex-direction: column; gap: 12px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media(max-width:480px){ .form-row{grid-template-columns:1fr;} }
+
+.f-group { display: flex; flex-direction: column; gap: 5px; }
+.f-group label { font-size: 12px; font-weight: 600; color: var(--dark-mid); letter-spacing: .03em; }
+.f-group input, .f-group select {
+  padding: 13px 16px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 9px; font-family: var(--fb); font-size: 14px; color: var(--dark);
+  background: var(--cream); outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.f-group input:focus, .f-group select:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(107,146,120,0.14);
+  background: white;
+}
+.f-group input::placeholder { color: var(--muted); }
+.f-group.full { grid-column: 1 / -1; }
+
+.submit-btn {
+  width: 100%; padding: 17px 24px; margin-top: 4px;
+  background: var(--sage-deep); color: white;
+  border: none; border-radius: 10px;
+  font-family: var(--fb); font-size: 16px; font-weight: 600;
+  cursor: pointer; letter-spacing: .02em;
+  box-shadow: 0 6px 24px rgba(61,92,71,0.35);
+  transition: background .2s, transform .15s, box-shadow .15s;
+}
+.submit-btn:hover { background: #2d4535; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(61,92,71,0.4); }
+.submit-btn:active { transform: translateY(0); }
+
+.privacy { text-align: center; font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+
+/* Success state */
+.success-state {
+  display: none;
+  text-align: center; padding: 20px 0;
+}
+.success-icon { font-size: 52px; margin-bottom: 16px; }
+.success-state h3 { font-family: var(--ff); font-size: 26px; font-weight: 700; color: var(--sage-deep); margin-bottom: 10px; }
+.success-state p { font-size: 14px; color: var(--mid); line-height: 1.65; font-weight: 300; }
+.next-steps-list { background: var(--sage-pale); border-radius: 12px; padding: 18px 20px; margin-top: 20px; text-align: left; }
+.next-steps-list p { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--sage-deep); margin-bottom: 10px; }
+.next-steps-list li { font-size: 13.5px; color: var(--dark-mid); margin-bottom: 7px; list-style: none; display: flex; gap: 8px; }
+
+/* ── FAQ ── */
+.faq { background: var(--cream); }
+.faq-list { margin-top: 40px; max-width: 680px; }
+.faq-item { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 20px 0; display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--fb); font-size: 15px; font-weight: 500; color: var(--dark);
+  cursor: pointer; gap: 16px;
+}
+.faq-q .arrow { color: var(--sage); font-size: 18px; flex-shrink: 0; transition: transform .25s; }
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a { display: none; font-size: 14px; color: var(--mid); line-height: 1.7; font-weight: 300; padding-bottom: 20px; }
+.faq-item.open .faq-a { display: block; }
+
+/* ── SECOND CTA ── */
+.cta2 {
+  background: linear-gradient(135deg, var(--sage-deep) 0%, var(--sage) 100%);
+  padding: 72px 24px; text-align: center;
+}
+.cta2 .sec-title { color: white; }
+.cta2 .sec-sub { color: rgba(255,255,255,0.7); margin: 0 auto 36px; }
+.cta2-btn {
+  display: inline-block; background: white; color: var(--sage-deep);
+  padding: 17px 44px; border-radius: 8px;
+  font-family: var(--fb); font-size: 16px; font-weight: 600;
+  text-decoration: none; letter-spacing: .02em;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  transition: transform .15s, box-shadow .15s;
+}
+.cta2-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(0,0,0,0.25); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); color: rgba(255,255,255,0.3);
+  text-align: center; padding: 32px 24px; font-size: 12px; line-height: 1.8;
+}
+footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+footer a:hover { color: rgba(255,255,255,0.7); }
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media(max-width:480px) {
+  .hero-form { flex-direction: column; border-radius: 10px; overflow: visible; }
+  .hero-form input { border-radius: 10px !important; border-right: 1px solid rgba(255,255,255,0.15) !important; }
+  .hero-form button { border-radius: 10px !important; padding: 14px; }
+  .proof-strip { gap: 28px; }
+  .form-card-header { padding: 22px 22px; }
+  .form-card-body { padding: 22px 22px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">🌿 Naria Le Mire Nutrition</div>
+  <a href="#register" class="nav-cta">Save My Seat →</a>
+</nav>
+
+<!-- URGENCY TICKER -->
+<div class="ticker">
+  ⚠️ <strong>Limited to 100 attendees only.</strong> Once we hit capacity, registration closes. Don't wait.
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-pill">
+      <span class="hero-pill-dot"></span>
+      Free Live Webinar · Thurday May 14
+    </div>
+
+    <h1>
+      Why You're Still Bloated,<br/>Tired & Inflamed
+      <span class="break">Even When You're Eating Healthy</span>
+    </h1>
+
+    <p class="hero-sub">
+      Join Naria Le Mire for a FREE LIVE WEBINARY where she reveals the <strong>hidden root causes</strong> most doctors never check - and how the right testing can give you a real roadmap to healing.
+    </p>
+
+    <!-- Quick capture form in hero -->
+    <div class="hero-form">
+      <input type="email" id="heroEmail" placeholder="Enter your email to save your spot →"/>
+      <button onclick="scrollToForm()">Reserve →</button>
+    </div>
+
+    <div class="hero-trust">
+      <span>🔒 Free to attend</span>
+      <span>✓ No recording sold</span>
+      <span>✓ Live Q&amp;A with Naria</span>
+      <span>✓ Free bonus guide included</span>
+    </div>
+
+    <div class="event-strip">
+      <div class="event-item">
+        <div class="e-label">Date</div>
+        <div class="e-val">Thurday, May 14, 2026</div>
+      </div>
+      <div class="event-item">
+        <div class="e-label">Platform</div>
+        <div class="e-val">Live on Zoom</div>
+      </div>
+      <div class="event-item">
+        <div class="e-label">Duration</div>
+        <div class="e-val">90 Minutes</div>
+      </div>
+      <div class="event-item">
+        <div class="e-label">Limited Access</div>
+        <div class="e-val">100 Slots Only</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-wrap">
+  <div class="cd-label">Webinar starts in</div>
+  <div class="countdown">
+    <div class="cd-unit"><div class="cd-num" id="days">00</div><div class="cd-lbl">Days</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="hours">00</div><div class="cd-lbl">Hours</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="mins">00</div><div class="cd-lbl">Mins</div></div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit"><div class="cd-num" id="secs">00</div><div class="cd-lbl">Secs</div></div>
+  </div>
+</div>
+
+<!-- SOCIAL PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item"><div class="proof-num">76</div><div class="proof-lbl">Biomarkers Tested</div></div>
+  <div class="proof-item"><div class="proof-num">100</div><div class="proof-lbl">Seats Available</div></div>
+  <div class="proof-item"><div class="proof-num">90 min</div><div class="proof-lbl">Live Training</div></div>
+  <div class="proof-item"><div class="proof-num">100%</div><div class="proof-lbl">Free to Attend</div></div>
+</div>
+
+<!-- PROBLEM SECTION -->
+<section class="section problem">
+  <div class="inner reveal">
+    <div class="eyebrow">Sound familiar?</div>
+    <h2 class="sec-title">You're doing everything right.<br/>So why does it keep coming back?</h2>
+    <div class="problem-layout">
+      <div class="problem-visual">
+        <p class="problem-quote">I had been bloated every single day for four years. I tried everything. After working with Naria, we finally found the root cause. Within 8 weeks I felt like a completely different person.</p>
+        <div class="problem-attr">- Elaine, 58 · Flare Freedom Client</div>
+      </div>
+      <div class="problem-items">
+        <div class="p-item">
+          <div class="p-icon">🥗</div>
+          <div>
+            <h4>You eat clean - but still flare</h4>
+            <p>Diet alone doesn't fix it because the root cause isn't always in what you're eating. It's in what nobody has tested yet.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <div class="p-icon">💊</div>
+          <div>
+            <h4>You're taking supplements - but nothing sticks</h4>
+            <p>Without knowing what your body actually needs, you could be spending hundreds on the wrong things every month.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <div class="p-icon">🩺</div>
+          <div>
+            <h4>Doctors say your labs are "normal"</h4>
+            <p>Standard blood panels only catch a fraction of what's really happening. There's a whole layer most doctors never look at.</p>
+          </div>
+        </div>
+        <div class="p-item">
+          <div class="p-icon">🔄</div>
+          <div>
+            <h4>It gets better - then comes back</h4>
+            <p>Because you've been treating symptoms, not causes. The OAT finally shows you the WHY behind every flare.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU'LL LEARN -->
+<section class="section learn">
+  <div class="inner reveal">
+    <div class="eyebrow">Inside this free training</div>
+    <h2 class="sec-title">What you'll discover on May 14</h2>
+    <p class="sec-sub">No generic advice. No fluff. Naria walks you through the exact framework she uses with private clients - and how one simple urine test changes everything.</p>
+    <div class="learn-grid">
+      <div class="lcard">
+        <div class="num">01</div>
+        <div class="icon">🦠</div>
+        <h3>Hidden gut invaders</h3>
+        <p>Why yeast, mold, and bad bacteria silently cause bloating, brain fog, and fatigue - even when you "eat clean."</p>
+      </div>
+      <div class="lcard">
+        <div class="num">02</div>
+        <div class="icon">⚡</div>
+        <h3>The energy thief</h3>
+        <p>The mitochondrial dysfunction most doctors miss - and why sleeping more isn't the answer to your fatigue.</p>
+      </div>
+      <div class="lcard">
+        <div class="num">03</div>
+        <div class="icon">🧠</div>
+        <h3>Your gut-brain link</h3>
+        <p>How chronic stress is literally damaging your gut lining - and what the OAT reveals about your neurotransmitter health.</p>
+      </div>
+      <div class="lcard">
+        <div class="num">04</div>
+        <div class="icon">🔄</div>
+        <h3>Detox &amp; nutrient gaps</h3>
+        <p>Is your body actually detoxing - or is it blocked? Are you wasting money on supplements you don't even need?</p>
+      </div>
+      <div class="lcard">
+        <div class="num">05</div>
+        <div class="icon">🗺️</div>
+        <h3>Your personal roadmap</h3>
+        <p>How the OAT gives you a precise, individualized healing plan - so you stop guessing and start actually getting better.</p>
+      </div>
+      <div class="lcard">
+        <div class="num">06</div>
+        <div class="icon">💬</div>
+        <h3>Live Q&amp;A with Naria</h3>
+        <p>Ask your questions directly. This is a rare small-group call - Naria will personally address your situation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="section who">
+  <div class="inner reveal">
+    <div class="eyebrow">Is this for you?</div>
+    <h2 class="sec-title">This webinar is for you if…</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="w-check">✓</div><p>You're 50+ and above and dealing with bloating, migraines, fatigue, or brain fog that won't go away</p></div>
+      <div class="who-card"><div class="w-check">✓</div><p>You already eat healthy and take supplements - but you still don't feel the way you should</p></div>
+      <div class="who-card"><div class="w-check">✓</div><p>You've been told your labs are "normal" but you know deep down something is still wrong</p></div>
+      <div class="who-card"><div class="w-check">✓</div><p>You're navigating perimenopause or menopause and your hormones feel completely out of control</p></div>
+      <div class="who-card"><div class="w-check">✓</div><p>You're exhausted from guessing and trying things that partially work - and you want real, data-backed answers</p></div>
+      <div class="who-card"><div class="w-check">✓</div><p>You're ready to invest in yourself and finally have a personalised plan that's built specifically for your body</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section testi">
+  <div class="inner-sm reveal" style="text-align:center;">
+    <div class="eyebrow">Client story</div>
+    <h2 class="sec-title">Real people. Real results.</h2>
+    <div class="testi-card">
+      <div class="testi-mark">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I had been bloated every single day for four years. I'd tried everything - elimination diets, probiotics, you name it. After working with Naria and doing this test, we finally found the root cause. Within 8 weeks I felt like a completely different person. I only wish I had found her sooner.</p>
+      <div class="testi-name">— Elaine, 58 · Flare Freedom Client</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about">
+  <div class="inner reveal">
+    <div class="about-grid">
+      <div class="about-avatar-wrap">
+        <div class="about-avatar">NL</div>
+        <div class="about-cert">CEO & Founder 
+        </div>
+         Naria Le Mire Nutrition</div>
+      </div>
+      <div>
+        <div class="eyebrow">Your host</div>
+        <h2 class="sec-title">Meet Naria Le Mire</h2>
+        <div class="about-body">
+          <p>Naria Le Mire is a registered dietitian and functional health practitioner specialising in chronic gut symptoms, fatigue, and inflammation. She is the creator of the Flare Freedom Program - a personalised, root-cause approach to helping people finally understand what's driving their symptoms.</p>
+          <p>After working with thousands of people who felt dismissed, confused, or stuck despite "doing everything right," Naria became certified in the Organic Acids Test - one of the most comprehensive functional health tools available. Unlike standard testing, the OAT looks at mitochondrial health, microbial overgrowth, neurotransmitter balance, detox pathways, and nutrient status - all in one simple at-home urine sample.</p>
+          <p>Every result is personally reviewed by Naria. Every protocol is designed for you - not a one-size-fits-all template.</p>
+        </div>
+        <div class="about-creds">
+          <span class="cred-chip">Registered Dietitian</span>
+          <span class="cred-chip">OAT Certified</span>
+          <span class="cred-chip">MosaicDX Partner</span>
+          <span class="cred-chip">Functional Gut Health</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section class="section bonus">
+  <div class="inner-sm reveal" style="text-align:center;">
+    <div class="eyebrow">Everyone who registers gets this</div>
+    <h2 class="sec-title">A free gift just for showing up</h2>
+    <div class="bonus-card">
+      <div class="bonus-tag">🎁 Free Bonus</div>
+      <h3>The Root Cause Checklist</h3>
+      <p>Naria's simple guide to the 6 signs your body is sending you that most doctors overlook - including which symptoms match which root cause, and what the OAT test measures in plain language.</p>
+      <div class="bonus-list">
+        <div class="b-item"><div class="b-icon">📄</div><span>The 6 root causes of chronic flares - explained in plain English</span></div>
+        <div class="b-item"><div class="b-icon">✅</div><span>Which symptoms match which root cause (so you can spot your own patterns)</span></div>
+        <div class="b-item"><div class="b-icon">🔬</div><span>What the OAT test measures - and what it means for you personally</span></div>
+        <div class="b-item"><div class="b-icon">💡</div><span>The questions to ask your practitioner at your next appointment</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION FORM (the money shot) -->
+<section class="form-sec" id="register">
+  <div class="form-layout">
+
+    <!-- LEFT: Persuasion copy -->
+    <div class="form-left reveal">
+      <div class="eyebrow">Save your seat</div>
+      <h2 class="sec-title" style="color:white;">One decision.<br/>A real roadmap to healing.</h2>
+      <p class="sec-sub">This isn't another generic gut health video. This is Naria - live - walking you through exactly what she finds when she runs the OAT on clients who have tried everything and still can't figure out why.</p>
+
+      <div class="what-get">
+        <div class="wg-item">
+          <div class="wg-icon">🔬</div>
+          <div><strong>The OAT framework explained simply</strong><span>No jargon. Just what 76 biomarkers actually tell us about your gut, energy, and brain.</span></div>
+        </div>
+        <div class="wg-item">
+          <div class="wg-icon">🗺️</div>
+          <div><strong>A real roadmap - not generic advice</strong><span>You'll leave knowing exactly what questions to ask, what to test, and what to do next.</span></div>
+        </div>
+        <div class="wg-item">
+          <div class="wg-icon">💬</div>
+          <div><strong>Live Q&amp;A - your questions answered</strong><span>Small group. No recordings sold. This is your chance to get Naria's eyes on your situation.</span></div>
+        </div>
+        <div class="wg-item">
+          <div class="wg-icon">🎁</div>
+          <div><strong>Free Root Cause Checklist</strong><span>Sent instantly when you register. Yours to keep forever.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form card -->
+    <div class="reveal">
+      <div class="form-card">
+        <div class="form-card-header">
+          <h3>Register for Free</h3>
+          <p>Thursday, May 14 · Live on Zoom · 90 minutes</p>
+        </div>
+        <div class="form-card-body">
+          <div class="spots-alert">
+            <div class="s-dot"></div>
+            <p><strong>Limited to 100 attendees.</strong> Once we hit capacity, registration closes permanently.</p>
+          </div>
+
+          <form class="reg-form" id="regForm" onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="f-group">
+                <label>First Name *</label>
+                <input type="text" id="fname" placeholder="Maria" required/>
+              </div>
+              <div class="f-group">
+                <label>Last Name *</label>
+                <input type="text" id="lname" placeholder="Santos" required/>
+              </div>
+            </div>
+            <div class="f-group">
+              <label>Email Address *</label>
+              <input type="email" id="femail" placeholder="your@email.com" required/>
+            </div>
+            <div class="f-group">
+              <label>WhatsApp / Phone *</label>
+              <input type="tel" id="fphone" placeholder="+1 (555) 000-0000" required/>
+            </div>
+            <div class="f-group">
+              <label>Your biggest health struggle *</label>
+              <select id="fsymptom" required>
+                <option value="" disabled selected>— Select your main symptom —</option>
+                <option>Bloating / digestive issues every day</option>
+                <option>Chronic fatigue / no energy</option>
+                <option>Brain fog / poor concentration</option>
+                <option>Migraines / frequent headaches</option>
+                <option>Hormonal issues / perimenopause</option>
+                <option>Multiple symptoms — can't pin it down</option>
+              </select>
+            </div>
+            <div class="f-group">
+              <label>How long have you been dealing with this?</label>
+              <select id="fduration">
+                <option value="" disabled selected>— Select —</option>
+                <option>Less than 1 year</option>
+                <option>1–3 years</option>
+                <option>3–5 years</option>
+                <option>5+ years (I've tried everything)</option>
+              </select>
+            </div>
+            <button type="submit" class="submit-btn">🌿 Reserve My Free Seat →</button>
+          </form>
+
+          <div class="success-state" id="successState">
+            <div class="success-icon">🎉</div>
+            <h3>You're Registered!</h3>
+            <p>Check your inbox — your Zoom link and free Root Cause Checklist are on their way right now.</p>
+            <div class="next-steps-list">
+              <p>What happens next:</p>
+              <ul>
+                <li><span>✅</span> Confirmation email sent immediately</li>
+                <li><span>📱</span> Zoom link sent via DM + email before the webinar</li>
+                <li><span>⏰</span> Reminder sent the morning of May 14</li>
+                <li><span>🌿</span> See you live on Thursday!</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="privacy">🔒 Your details are private. We never share or sell your information. Unsubscribe anytime.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq">
+  <div class="inner reveal">
+    <div class="eyebrow">Common questions</div>
+    <h2 class="sec-title">Frequently asked</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is this webinar really free? <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">Yes - 100% free to attend. There's no charge to register or attend. Naria will share information about the Flare Freedom program at the end, but there's no obligation whatsoever.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will there be a replay? <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">This is a live, intimate webinar and there is no replay sold. We do this intentionally to keep it interactive and so Naria can answer your questions personally. Register and show up live to get the most out of it.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What exactly is the OAT test? <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">The Organic Acids Test is a simple at-home urine test that measures 76 biomarkers across 6 categories - gut and microbial health, mitochondrial function, neurotransmitter balance, toxic exposure, detox pathways, and nutrient needs. It gives a much more complete picture than standard blood tests.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I already eat healthy and take supplements. Is this still for me? <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">Absolutely - in fact, this is especially for you. Most people who "do everything right" and still struggle have a root cause that diet and supplements alone can't fix. The OAT helps identify exactly what's driving your symptoms so you're not guessing anymore.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need to buy anything to attend? <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">No purchase is required to attend the webinar. It's completely free. You'll just need a Zoom account (also free) and a device to watch on. Naria will share details about her Flare Freedom program at the end for those who want to take the next step.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What time does the webinar start? <span class="arrow">▾</span>
+        </button>
+        <div class="faq-a">The exact time will be confirmed and sent to you via email and DM after you register. We'll also send a reminder the day before and the morning of the webinar so you don't miss it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECOND CTA BANNER -->
+<div class="cta2">
+  <div class="inner-sm">
+    <h2 class="sec-title">Still on the fence?</h2>
+    <p class="sec-sub">You've spent years trying to figure this out. This webinar is 90 minutes and it's free. The worst that happens is you learn something new. The best? You finally get your answers.</p>
+    <a href="#register" class="cta2-btn">Yes, I Want My Free Seat →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Naria Le Mire Nutrition · Flare Freedom Program</p>
+  <p style="margin-top:8px;"><a href="#">Privacy Policy</a> · <a href="#">Contact</a> · <a href="#">Unsubscribe</a></p>
+</footer>
+
+<script>
+// ── COUNTDOWN ──────────────────────────────────────────────────────────────
+const webinarDate = new Date('2026-05-14T19:00:00');
+function updateCountdown() {
+  const diff = webinarDate - new Date();
+  if (diff <= 0) {
+    document.querySelector('.countdown-wrap').innerHTML =
+      '<p style="font-size:18px;font-weight:600;color:var(--sage-deep);text-align:center;padding:8px 0;">🟢 The webinar is live right now! Join on Zoom.</p>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('secs').textContent  = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ── HERO EMAIL SCROLL ──────────────────────────────────────────────────────
+function scrollToForm() {
+  const email = document.getElementById('heroEmail').value.trim();
+  const target = document.getElementById('femail');
+  document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+  setTimeout(() => { if (email) target.value = email; target.focus(); }, 600);
+}
+
+// ── FORM SUBMIT ────────────────────────────────────────────────────────────
+function handleSubmit(e) {
+  e.preventDefault();
+  // TODO: POST to MailerLite API, Google Sheets, or your CRM here
+  document.getElementById('regForm').style.display = 'none';
+  document.getElementById('successState').style.display = 'block';
+  document.querySelector('.spots-alert').style.display = 'none';
+  window.scrollTo({ top: document.getElementById('register').offsetTop, behavior: 'smooth' });
+}
+
+// ── FAQ TOGGLE ─────────────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── SCROLL REVEAL ──────────────────────────────────────────────────────────
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
