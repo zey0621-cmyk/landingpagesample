@@ -945,11 +945,56 @@ function scrollToForm() {
 // ── FORM SUBMIT ────────────────────────────────────────────────────────────
 function handleSubmit(e) {
   e.preventDefault();
-  // TODO: POST to MailerLite API, Google Sheets, or your CRM here
-  document.getElementById('regForm').style.display = 'none';
-  document.getElementById('successState').style.display = 'block';
-  document.querySelector('.spots-alert').style.display = 'none';
-  window.scrollTo({ top: document.getElementById('register').offsetTop, behavior: 'smooth' });
+
+  // ── BUTTON LOADING STATE ─────────────────────────────
+  const btn = document.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = "Submitting...";
+
+  // ── COLLECT FORM DATA ────────────────────────────────
+  const data = {
+    fname: document.getElementById('fname').value,
+    lname: document.getElementById('lname').value,
+    email: document.getElementById('femail').value,
+    phone: document.getElementById('fphone').value,
+    symptom: document.getElementById('fsymptom').value,
+    duration: document.getElementById('fduration').value,
+    timestamp: new Date().toISOString(),
+    source: "webinar_landing_page"
+  };
+
+  // ── SEND TO MAKE WEBHOOK ─────────────────────────────
+  fetch("https://hook.us2.make.com/nuqr8wxwbirkr6fnauom7wh4euj8wyik", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+
+  // ── SUCCESS ──────────────────────────────────────────
+  .then(() => {
+    btn.disabled = false;
+    btn.textContent = "🌿 Reserve My Free Seat →";
+
+    document.getElementById('regForm').style.display = 'none';
+    document.getElementById('successState').style.display = 'block';
+    document.querySelector('.spots-alert').style.display = 'none';
+
+    window.scrollTo({
+      top: document.getElementById('register').offsetTop,
+      behavior: 'smooth'
+    });
+  })
+
+  // ── ERROR HANDLING ───────────────────────────────────
+  .catch((error) => {
+    btn.disabled = false;
+    btn.textContent = "🌿 Reserve My Free Seat →";
+
+    alert("Something went wrong. Please try again.");
+    console.error(error);
+  });
 }
 
 // ── FAQ TOGGLE ─────────────────────────────────────────────────────────────
